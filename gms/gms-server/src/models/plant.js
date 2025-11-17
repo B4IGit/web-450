@@ -33,16 +33,16 @@ let plantSchema = new Schema({
   },
   gardenId: {
     type: Number,
-    required: [true, 'Garden ID is required']
+    required: [true, "Garden ID is required"],
   },
 });
 
-plantSchema.pre('save', function (next) {
+plantSchema.pre("save", function (next) {
   if (!this.isNew) {
-    this.dateModified = new Date()''
+    this.dateModified = new Date();
   }
   next();
-})
+});
 
 module.exports = {
   Plant: mongoose.model("Plant", plantSchema),

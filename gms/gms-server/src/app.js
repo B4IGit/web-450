@@ -22,37 +22,38 @@ const plantRouter = require("./routes/plant");
 let app = express();
 
 // Mongoose connection
-const connectionString = mongodb+srv://gms_user:s3cret@bellevueuniversity.dlgzebu.mongodb.net/?appName=BellevueUniversity
+const connectionString =
+  "mongodb+srv://gms_user:s3cret@bellevueuniversity.dlgzebu.mongodb.net/?appName=BellevueUniversity";
 
-const dbName = 'gms'; // Database name
+const dbName = "gms"; // Database name
 
 // Function to connect to the database
 async function connectToDatabase() {
   try {
     await mongoose.connect(connectionString, {
       dbName: dbName,
-    })
-    console.log(`Connection to the '${dbName}' database was successful`)
+    });
+    console.log(`Connection to the '${dbName}' database was successful`);
   } catch (err) {
-    console.error(`MongoDB connection error: ${err}`)
+    console.error(`MongoDB connection error: ${err}`);
   }
 }
 
 connectToDatabase(); // Call the function to connect to the database
 
-  // CORS configuration
-  app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*"); // This allows all origins
-    res.setHeader(
-      "Access-Control-Allow-Methods",
-      "GET, POST, PUT, PATCH, DELETE, OPTIONS",
-    ); // Allowed request methods
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept",
-    ); // Allowed headers
-    next();
-  });
+// CORS configuration
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*"); // This allows all origins
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE, OPTIONS",
+  ); // Allowed request methods
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept",
+  ); // Allowed headers
+  next();
+});
 
 // Express app configuration
 app.use(logger("dev"));
@@ -63,7 +64,7 @@ app.use(cookieParser());
 // Routing configuration
 app.use("/api", indexRouter);
 app.use("/api/gardens", gardenRouter);
-app.use("/api/plants", plantRouter)
+app.use("/api/plants", plantRouter);
 
 // Use the error handling middleware
 app.use(notFoundHandler);

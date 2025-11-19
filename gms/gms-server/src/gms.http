@@ -1,0 +1,65 @@
+//
+//
+// GET REQUESTS
+### Find all gardens
+GET http://[::1]:3000/api/gardens
+
+### Find garden by ID
+GET http://[::1]:3000/api/gardens/6
+
+### Find all plants
+GET http://[::1]:3000/api/plants
+
+### Find plant by ID
+GET http://[::1]:3000/api/plants/691e4fa8aea4c898b5b90131
+
+//
+//
+// POST REQUESTS
+### Add a new garden to the gardens collection
+POST http://[::1]:3000/api/gardens
+Content-Type: application/json
+
+{
+  "name": "Herb Garden",
+  "location": "Botanical Garden",
+  "description": "A garden with a variety of herbs",
+  "dateCreated": "2023-04-15T00:00:00.000Z"
+}
+
+### Add a new plant
+POST http://[::1]:3000/api/plants/3
+Content-Type: application/json
+
+{
+  "name": "Super Chili",
+  "type": "Vegetable",
+  "status": "Planted",
+  "datePlanted": "2023-04-15T00:00:00.000Z"
+}
+
+### Update an existing garden with corresponding ID
+PATCH http://[::1]:3000/api/gardens/8
+Content-Type: application/json
+
+{
+  "name": "Updated Herb Garden",
+  "location": "New Botanical Garden",
+  "description": "An updated description for the herb garden."
+}
+
+### Update an existing garden with corresponding ID
+PATCH http://[::1]:3000/api/plants/691e4fa8aea4c898b5b90131
+Content-Type: application/json
+
+{
+  "name": "Updated Tomato",
+  "type": "Herb",
+  "status": "Growing"
+}
+
+### Delete a garden
+DELETE http://[::1]:3000/api/gardens/8
+
+### Delete a plant
+DELETE http://[::1]:3000/api/plants/691e56406017f0817a7d09b4
